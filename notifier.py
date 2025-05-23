@@ -1,7 +1,11 @@
 import smtplib
 from email.mime.text import MIMEText
 import sys
-sys.stdout.reconfigure(encoding='utf-8')
+
+# Only reconfigure if sys.stdout exists and supports it
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
 
 EMAIL_ADDRESS = "ayushchatterjee2005dak35@gmail.com"
 EMAIL_PASSWORD = "ncds quyw ygpf zvrz"  # App password, not your main password

@@ -25,8 +25,8 @@ class AttendanceApp:
         self.scanner = Scanner(self.left_frame)
 
         # Admin Panel Button
-        self.admin_btn = tk.Button(self.left_frame, text="Admin Panel", command=AdminPanel)
-        self.admin_btn.pack(pady=10)
+        # self.admin_btn = tk.Button(self.left_frame, text="Admin Panel", command=AdminPanel)
+        # self.admin_btn.pack(pady=10)
 
         # Right frame split into top and bottom halves
         self.top_right = tk.LabelFrame(self.right_frame, text="Today's Logs", padx=5, pady=5)
