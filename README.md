@@ -1,75 +1,99 @@
-# 🎓 ID Card Attendance Tracker System (Python + OpenCV + OCR + GUI)
-A computer vision-based attendance system that uses OCR (Optical Character Recognition) to detect student ID cards through a webcam, mark attendance, log it daily, take snapshots, and optionally send notifications via email.
 
-## ✅ Features
+# 🧑‍💼 ID Card Attendance Tracker System
 
-- 🔍 **Real-Time ID Card Scanning** via webcam using OpenCV and Tesseract OCR.
-- 🧠 **OCR-Based ID Detection** with validation against registered students.
-- 🗃️ **Student Database Management** via a simple admin panel.
-- 📷 **Snapshot Logging** — saves a photo on each successful attendance.
-- 📅 **Daily Log Files** and `attendance_status.csv` for total counts.
-- 📤 **Email Alerts** when a student is marked present (optional).
-- 📊 **GUI Interface** using Tkinter.
-- 📁 Organized data storage (`logs/`, `photos/`, `students.csv`).
+A smart, GUI-based attendance system using Python, OpenCV, and OCR to scan student ID cards, verify registered users, log attendance, send email alerts, and provide detailed dashboards for both students and admins.
 
-## 🧰 Requirements
+---
 
-- Python 3.8+
-- Tesseract OCR installed (Windows users: [Download here](https://github.com/tesseract-ocr/tesseract))
-- pip packages:
-  pip install opencv-python pytesseract pandas pillow face_recognition
-## 🏗️ Project Structure
-📂 Attendane Tracker System
+## 📦 Features
 
-├── main.py                  # Launches the GUI
+- ✅ ID Card OCR using EasyOCR
+- 🧾 Student/Admin Registration & Login System
+- 📸 Auto Snapshot Capture on Attendance
+- 📊 Daily & Total Attendance Logs (CSV)
+- 📧 Email Notification for Attendance
+- 🧑‍💻 GUI built with Tkinter
+- 📂 Photo & Log Auto-Organization
+- 🔐 Secure password validation
 
-├── scanner.py               # Core webcam + OCR logic
+---
+## 📦 Download
+The Latest version is released in GitHub. Anyone can Download it and use it.
 
-├── admin.py                 # Admin panel for adding students
+## 🛠️ Setup Instructions
 
-├── utils.py                 # Attendance logging & helper functions
+### 1. Clone the Repository
 
-├── notifier.py              # Email alert system
+```bash
+git clone https://github.com/ayush2005soumya/ID-Based-Attendance-Tracker-System.git
+cd attendance-tracker
+```
 
-├── students.csv             # Registered student database
+### 2. Create Virtual Environment (Optional but Recommended)
 
-├── photos/                  # Saved snapshots of marked students
+```bash
+python -m venv venv
+venv\Scripts\activate    # On Windows
+# source venv/bin/activate  # On macOS/Linux
+```
 
-├── logs/                    # Daily attendance logs
+### 3. Install Dependencies
 
-├── attendance_status.csv    # Total attendance counts per student
+```bash
+pip install -r requirements.txt
+```
 
-# 🛠️ Setup Instructions
-## Install Tesseract
-Download and install Tesseract from https://github.com/tesseract-ocr/tesseract
-## Update the path in scanner.py:
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-## Install Python Packages
-pip install opencv-python pytesseract pandas pillow face_recognition
-## Run the App
-python main.py
-## 🧑‍💼 Admin Panel (Registering Students)
-Click on Admin Panel in the GUI and enter:
-ID
-Name
-Phone
-Email (if using email alerts)
-This will update students.csv.
+> **Dependencies include**:  
+> `opencv-python`, `easyocr`, `pandas`, `tkinter`, `numpy`, `Pillow`, `smtplib`, `email-validator`
 
-## 📤 Email Alerts (Optional)
-If you don’t want to use Twilio for SMS, use email alerts:
-Update your Gmail/SMTP credentials in notifier.py.
-Enable Less Secure App Access or App Passwords in your Google account.
-The system will send attendance notifications to registered student emails.
+### 4. Download EasyOCR Language Model (First Use)
 
-## 📌 Notes
-The system assumes student IDs start with 23U10 and are 8 characters long.
-You can change this logic in utils.py → is_valid_id().
-Logs are stored in logs/YYYY-MM-DD.csv.
-Snapshots saved to photos/.
+```python
+import easyocr
+reader = easyocr.Reader(['en'])  # This downloads model files
+```
 
-## 📸 Screenshots (Optional)
-(Add screenshots here of the GUI and attendance detection)
+---
 
-## 📜 License
-This project is for educational purposes. Customize or enhance it freely for your institution.
+## 🚀 Run the App
+
+```bash
+python landing_page.py
+```
+
+---
+
+## 📁 Project Structure
+
+```
+attendance-tracker/
+├── landing_page.py         # Main entry GUI
+├── main.py                 # Main app UI logic
+├── scanner.py              # OCR, webcam & attendance logic
+├── admin_login.py          # Admin GUI & dashboard
+├── student_login.py        # Student GUI & dashboard
+├── utils.py                # Helpers for logging, email, snapshots
+├── dashboard_utils.py      # CSV table viewer GUI
+├── notifier.py             # Email alert logic
+├── student.csv             # Registered student data
+├── attendance_status.csv   # Total attendance data
+├── logs/                   # Daily CSV logs
+├── photos/                 # Attendance snapshots
+└── requirements.txt        # Python dependencies
+```
+
+---
+
+## 🔒 Data Storage
+
+- All user data is stored in local CSV files.
+- Snapshots are auto-saved in `/photos`.
+- Daily logs in `/logs/YYYY-MM-DD.csv`.
+
+---
+
+## ✉️ Email Setup
+
+To enable email alerts:
+1. Set your sender email and password in `notifier.py`
+2. Use app password if 2FA is enabled on Gmail
